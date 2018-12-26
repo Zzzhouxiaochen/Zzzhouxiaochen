@@ -1,0 +1,271 @@
+1.斐波那契：
+非递归：
+#include <stdio.h>
+#include <stdlib.h>
+
+int fib(int n)
+{
+	if (n <= 2)
+		return 1;
+	else
+	{
+		int a = 1;
+		int b = 1;
+		int c = 0;
+		while (n>2)
+		{
+			c = a + b;
+			a = b;
+			b = c;
+			n--;
+		}
+		return c;
+	}
+}
+
+int main()
+{
+	int n = 6;
+	printf("%d \n", fib(n));
+	system("pause");
+	return 0;
+}
+
+递归：
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int fib(int n)
+{
+	if (n <= 2)
+		return 1;
+	else
+		return fib(n - 1) + fib(n - 2);
+}
+
+int main()
+{
+	int n = 6;
+	printf("%d \n",fib(n));
+	system("pause");
+	return 0;
+
+}
+
+
+2.编写一个函数实现n^k，使用递归实现
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<windows.h> 
+
+ 
+
+int power(int n, int k)
+{
+	if (k <= 0)
+		return 1;
+	else
+		return n*power(n, k - 1);
+}
+
+int main()
+{
+	int n = 3;
+	int k = 2;
+	scanf("%d%d", &n, &k);
+	int ret=power(n, k);
+	printf("%d\n", ret);
+	system("pause");
+	return 0;
+
+}
+
+3. 写一个递归函数DigitSum(n)，输入一个非负整数，返回组成它的数字之和， 
+例如，调用DigitSum(1729)，则应该返回1+7+2+9，它的和是19 
+
+
+#include<stdio.h>
+#include<stdlib.h>
+
+int DigitSum(n)
+{
+	if (n>0)
+	{
+		return n % 10 + DigitSum(n/10);
+	}
+	return 0;
+}
+
+int main()
+{
+	int num = 0;
+	scanf("%d", &num);
+	printf("%d\n", DigitSum(num));
+	system("pause");
+	return 0;
+
+}
+
+4. 编写一个函数 reverse_string(char * string)（递归实现） 
+实现：将参数字符串中的字符反向排列。 
+要求：不能使用C函数库中的字符串操作函数。
+
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+#include "stdlib.h"
+#include<stdio.h>
+void reverse_string(char *string)
+{
+	if ('\0' != *(++string))
+		reverse_string(string);
+	printf("%c", *(string -1));
+}
+
+int main()
+{
+	char *a = "abcde";
+	reverse_string(a);
+	printf("\n");
+	system("pause");
+	return 0;
+}
+
+
+
+5.递归和非递归分别实现strlen
+
+计数、递归和非递归三种方法分别实现strlen 
+首先明白strlen的功能
+这是一个求字符串长度的函数
+只能用char*做参数(字符型指针)，且必须是以'\0'结尾的
+ 
+#include <stdio.h>
+#include "stdlib.h"
+
+
+int my_strlen0(const char *arr)//计数方式
+{
+	int count = 0;
+	while (*arr)
+	{
+		arr++;
+		count++;
+	}
+	return count;
+}
+
+int my_strlen1(char *arr)//指针方式
+{
+	char *p = arr;//将数组首元素地址给指针p
+	while (*p != '\0')
+	{
+		p++;           //指针最后指向arr中最后一个元素
+	}
+	return p - arr;//返回数组元素个数
+
+}
+
+int my_strlen2(char *arr)//递归方式
+{
+	if ( '\0' == *arr)
+	{
+	             return 0;
+	}
+	else 
+	{
+		return 1+my_strlen2(arr+1);//调用自己 传arr+1
+	}
+}
+
+
+int main()
+{
+
+	char arr[] = "abcdefg";
+	my_strlen0(arr);
+	my_strlen1(arr);
+	my_strlen2(arr);
+	printf("%d\n",my_strlen0(arr));
+	printf("%d\n",my_strlen1(arr));
+	printf("%d\n",my_strlen2(arr));
+                 system("pause");
+	return 0;
+
+}
+
+ 6.递归和非递归分别实现求n的阶乘 
+
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+#include "stdlib.h"
+
+
+//递归方法实现N的阶乘
+int fac1(int n)
+{
+	if (n == 1)
+	{
+		return 1;
+	}
+	return n *fac1(n - 1);
+}
+
+//非递归方法实现N 的阶乘
+int fac2(int n) 
+{
+	int sum = 1;
+	int i;
+	for (i=n;i>0;i--)
+	{
+		sum *= i;
+	}
+	return sum;
+}
+
+
+int main()
+{
+	int n = 0;
+	printf("请输入:");
+	scanf("%d", &n);
+	int b = 0;
+	int a = 0;
+	a = fac1(n);
+	b = fac2(n);
+	printf("递归结果：%d\n", a);
+	printf("非递归：%d\n", b);
+	system("pause");
+	return 0;
+}
+
+
+7.递归方式实现打印一个整数的每一位 
+
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+#include "stdlib.h"
+#include<stdio.h>
+
+
+void print(int n)
+{
+	if (n > 9)
+	{
+		print(n / 10);
+	}
+	printf("%d ", n % 10);
+}
+
+
+
+int main()
+{
+	int n = 0;
+	printf("请输入:");
+	scanf("%d", &n);
+	print(n);
+	system("pause");
+	return 0;
+}
