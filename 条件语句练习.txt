@@ -1,0 +1,125 @@
+#include <stdlib.h>
+#include <time.h>
+#include <stdlib.h>
+int main(void)
+{
+int x;
+int num;
+srand(time(NULL)); //产生随机数种子
+num = rand( ) % 100 + 1; //产生1-100内的一个随机数
+while(1)
+{scanf("%d",&x);
+if(x==num)
+{printf("你成功了！");break;
+}
+if(x>num)
+{printf("大了！");}
+else
+{
+printf("小了！");}
+}
+system("pause");
+return 0;
+} 
+
+
+
+
+#include<stdio.h>
+#include<string.h>
+
+
+int main()
+{
+	int arr[10] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+	int k = 7;
+	int left = arr[0];
+	int right = sizeof(arr) / sizeof(arr[0]) - 1;
+	while (left<=right)
+	{
+		int mid = left + (right - left) / 2;
+		if (arr[mid] == k)
+		{
+			printf("找到了,下标为：%d\n",mid);
+			break;
+		}
+		else if (arr[mid] <= k)
+		{
+			left = mid + 1;
+		}
+		else
+		{
+			right = mid - 1;
+		}
+
+	}
+	if (left > right)
+	{
+	         printf("没有找到\n");
+	}
+	system("pause");
+	return 0;
+
+}
+
+
+
+
+
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+ 
+ int main()
+ {
+ 	char arr[10] = {0};
+ 	int i = 0;
+ 	char *p = "123456";
+ 	for(i=0; i<3; i++)
+ 	{
+ 		printf("请输入密码:>");
+ 		scanf("%s", arr);
+ 		if(strcmp(arr, p) == 0)
+ 		{
+ 			printf("登录成功\n");
+ 			break;
+ 		}
+ 		else
+ 		{
+ 			printf("密码错误\n");
+ 		}
+ 	}
+ 	if(i == 3)
+ 	{
+ 		printf("三次密码错误，退出程序\n");
+ 	}
+	system("pause");
+ 	return 0;
+ }
+
+
+
+#include<stdio.h>
+#include<stdlib.h>
+
+int main()
+{
+    int ch;
+    while ((ch = getchar()) != EOF)
+    {
+        if (ch >= 'A'&&ch <= 'Z')
+            printf("ch=%c", ch + 32);
+        else
+        {
+            if (ch >= 'a'&&ch <= 'z')
+                printf("ch=%c", ch - 32);
+            else
+                printf("ch=%c", ch);
+        }
+    }
+
+    system("pause");
+    return 0;
+}
