@@ -13,7 +13,7 @@ void houmian()
 
 if (head == NULL)
 {
-	return
+	return;
 }
 Node* cur = p->First;
 while (cur->next->value != NULL)

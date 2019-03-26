@@ -242,7 +242,7 @@ void weicha(SList *s,SLDataType v)
 	{
 		cur= cur->next;
 	}
-
+	cur->next = node;
 }
 
 
