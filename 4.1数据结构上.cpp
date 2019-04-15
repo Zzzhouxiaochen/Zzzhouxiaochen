@@ -68,8 +68,7 @@ Result CreateTree(int preorder[], int size)
 	root->left = leftResult.root;
 
 
-
-	Result rightResult = CreateTree(preorder + 1 + leftResult.used, 
+	Result rightResult = CreateTree(preorder + 1 + leftResult.used, x
 										size - 1 - leftResult.used);
 	root->right = rightResult.root;
 
